@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import com.vitoria.desafioitau.R
 import com.vitoria.desafioitau.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_detail.*
+import java.text.NumberFormat
 
 class DetailActivity : BaseActivity() {
 
@@ -16,7 +17,8 @@ class DetailActivity : BaseActivity() {
 
         setupToolbar(in_toolbar as Toolbar, R.string.detail_activity_title)
 
-        tv_activity_detail_amount_valuer.text = intent.getStringExtra(EXTRA_AMOUNT)
+        tv_activity_detail_amount_valuer.text =
+            NumberFormat.getCurrencyInstance().format(intent.getDoubleExtra(EXTRA_AMOUNT, 0.00))
         tv_activity_detail_source_value.text = intent.getStringExtra(EXTRA_SOURCE)
         tv_activity_detail_category_value.text = intent.getStringExtra(EXTRA_CATEGORY)
     }
@@ -29,7 +31,7 @@ class DetailActivity : BaseActivity() {
 
         fun getStartIntent(
             context: Context,
-            amount: String,
+            amount: Double,
             source: String,
             category: String
         ): Intent {

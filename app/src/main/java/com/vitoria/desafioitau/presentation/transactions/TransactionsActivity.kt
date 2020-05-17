@@ -34,7 +34,7 @@ class TransactionsActivity : BaseActivity() {
                     adapter = TransactionsAdapter(transactions) { transaction ->
                         val intent = DetailActivity.getStartIntent(
                             this@TransactionsActivity,
-                            transaction.amount.toString(),
+                            transaction.amount,
                             transaction.source,
                             transaction.category.toString()
                         )
@@ -54,6 +54,6 @@ class TransactionsActivity : BaseActivity() {
             }
         })
 
-        viewModel.getTransactions()
+        viewModel.getTransactions(1)
     }
 }

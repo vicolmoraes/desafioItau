@@ -13,11 +13,17 @@ class TransactionsViewModel(private val dataSource: TransactionsRepository) : Vi
     val transactionsLiveData: MutableLiveData<List<Transaction>> = MutableLiveData()
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
 
-    fun getTransactions() {
+    fun getTransactions(month: Int) {
         dataSource.getTransactions { result: TransactionsResult ->
             when (result) {
                 is TransactionsResult.Success -> {
-                    transactionsLiveData.value = result.transactions
+                    var monthList: ArrayList<Transaction> = ArrayList()
+                    for (transaction in result.transactions) {
+                        if (transaction.month == month) {
+                            monthList.add(transaction)
+                        }
+                    }
+                    transactionsLiveData.value = monthList
                     viewFlipperLiveData.value = Pair(VIEW_FLIPPER_TRANSACTIONS, null)
                 }
                 is TransactionsResult.ApiError -> {

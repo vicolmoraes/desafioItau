@@ -58,8 +58,8 @@
             android:textAlignment="textStart"
             android:textColor="@color/black_000000"
             android:textSize="@dimen/med_font_size"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/tv_item_transaction_amount_valuer"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cl_item_transaction_icon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Uber" />
@@ -70,14 +70,26 @@
             android:layout_height="wrap_content"
             android:textAlignment="textStart"
             android:textColor="@color/orange_ff650"
-            android:textStyle="bold"
             android:textSize="@dimen/med_font_size"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_item_transaction_source_value"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_transaction_source_value"
+            app:layout_constraintBottom_toTopOf="@+id/tv_item_transaction_month"
             tools:text="R$ 50,00" />
 
+        <TextView
+            android:id="@+id/tv_item_transaction_month"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/min_font_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_transaction_source_value"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_transaction_amount_valuer"
+            tools:text="R$ 50,00" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
