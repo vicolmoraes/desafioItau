@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vitoria.desafioitau.R
-import com.vitoria.desafioitau.data.Months
+import com.vitoria.desafioitau.data.MonthsEnum
 import com.vitoria.desafioitau.data.model.Transaction
 import kotlinx.android.synthetic.main.item_transaction.view.*
 import java.text.NumberFormat
@@ -39,7 +39,7 @@ class TransactionsAdapter(
         fun bindView(transaction: Transaction) {
             source.text = transaction.source
             amount.text = NumberFormat.getCurrencyInstance().format(transaction.amount)
-            month.text = Months.values().get(transaction.month).month
+            month.text = MonthsEnum.values().get(transaction.month).month
 
             itemView.setOnClickListener {
                 onItemClickListener.invoke(transaction)

@@ -7,8 +7,16 @@ import androidx.appcompat.widget.Toolbar
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
 
-    protected fun setupToolbar(toolbar: Toolbar, titleIdRes: Int, showBackButton: Boolean = false) {
-        toolbar.title = getString(titleIdRes)
+    protected fun setupToolbar(
+        toolbar: Toolbar,
+        titleIdRes: Int,
+        title: String?,
+        showBackButton: Boolean = false
+    ) {
+        if (titleIdRes != 0)
+            toolbar.title = getString(titleIdRes)
+        else
+            toolbar.title = title
         setSupportActionBar(toolbar)
         if (showBackButton) {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -1,6 +1,6 @@
 package com.vitoria.desafioitau.data
 
-enum class Months(val month: String) {
+enum class MonthsEnum(val month: String) {
     DEFAULT("Default"),
     JANEIRO("Janeiro"),
     FEVEREIRO("Fevereiro"),

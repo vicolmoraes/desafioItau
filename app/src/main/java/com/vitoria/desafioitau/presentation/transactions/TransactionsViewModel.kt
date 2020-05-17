@@ -11,6 +11,7 @@ import com.vitoria.desafioitau.data.repository.TransactionsRepository
 class TransactionsViewModel(private val dataSource: TransactionsRepository) : ViewModel() {
 
     val transactionsLiveData: MutableLiveData<List<Transaction>> = MutableLiveData()
+    val transactionsSum: MutableLiveData<Double> = MutableLiveData()
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
 
     fun getTransactions(month: Int) {
@@ -18,11 +19,15 @@ class TransactionsViewModel(private val dataSource: TransactionsRepository) : Vi
             when (result) {
                 is Results.SuccessTransaction -> {
                     var monthList: ArrayList<Transaction> = ArrayList()
+                    var sum: Double = 0.0
                     for (transaction in result.transactions) {
+
                         if (transaction.month == month) {
                             monthList.add(transaction)
+                            sum += transaction.amount
                         }
                     }
+                    transactionsSum.value = sum
                     transactionsLiveData.value = monthList
                     viewFlipperLiveData.value = Pair(VIEW_FLIPPER_TRANSACTIONS, null)
                 }

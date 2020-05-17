@@ -17,7 +17,7 @@ class DetailActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        setupToolbar(in_toolbar as Toolbar, R.string.detail_activity_title)
+        setupToolbar(in_toolbar as Toolbar, R.string.detail_activity_title, null)
 
         tv_activity_detail_amount_valuer.text =
             NumberFormat.getCurrencyInstance().format(intent.getDoubleExtra(EXTRA_AMOUNT, 0.00))
