@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import com.vitoria.desafioitau.R
-import com.vitoria.desafioitau.data.repository.TransactionsApiDataSource
+import com.vitoria.desafioitau.data.repository.ApiDataSource
 import com.vitoria.desafioitau.presentation.base.BaseActivity
 import com.vitoria.desafioitau.presentation.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_transactions.*
@@ -17,8 +17,12 @@ class TransactionsActivity : BaseActivity() {
 
         setupToolbar(in_toolbar as Toolbar, R.string.transactions_activity_title)
 
+        setData()
+    }
+
+    private fun setData() {
         val viewModel: TransactionsViewModel = TransactionsViewModel.ViewModelFactory(
-            TransactionsApiDataSource()
+            ApiDataSource()
         )
             .create(TransactionsViewModel::class.java)
 
@@ -36,7 +40,7 @@ class TransactionsActivity : BaseActivity() {
                             this@TransactionsActivity,
                             transaction.amount,
                             transaction.source,
-                            transaction.category.toString()
+                            transaction.category
                         )
                         this@TransactionsActivity.startActivity(intent)
                     }

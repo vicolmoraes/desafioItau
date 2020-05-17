@@ -1,29 +1,28 @@
-package com.vitoria.desafioitau.presentation.transactions
+package com.vitoria.desafioitau.presentation.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.vitoria.desafioitau.R
 import com.vitoria.desafioitau.data.Results
-import com.vitoria.desafioitau.data.model.Transaction
-import com.vitoria.desafioitau.data.repository.TransactionsRepository
+import com.vitoria.desafioitau.data.repository.CategoriesRepository
 
-class TransactionsViewModel(private val dataSource: TransactionsRepository) : ViewModel() {
+class DetailViewModel(private val dataSource: CategoriesRepository) : ViewModel() {
 
-    val transactionsLiveData: MutableLiveData<List<Transaction>> = MutableLiveData()
+    val categoriesLiveData: MutableLiveData<String> = MutableLiveData()
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
 
-    fun getTransactions(month: Int) {
-        dataSource.getTransactions { result: Results ->
+    fun getCategories(month: Int) {
+        dataSource.getCategories { result: Results ->
             when (result) {
-                is Results.SuccessTransaction -> {
-                    var monthList: ArrayList<Transaction> = ArrayList()
-                    for (transaction in result.transactions) {
-                        if (transaction.month == month) {
-                            monthList.add(transaction)
+                is Results.SuccessCategory -> {
+                    var categorySelected: String = String()
+                    for (category in result.transactions) {
+                        if (category.id == month) {
+                            categorySelected = category.name
                         }
                     }
-                    transactionsLiveData.value = monthList
+                    categoriesLiveData.value = categorySelected
                     viewFlipperLiveData.value = Pair(VIEW_FLIPPER_TRANSACTIONS, null)
                 }
                 is Results.ApiError -> {
@@ -43,11 +42,11 @@ class TransactionsViewModel(private val dataSource: TransactionsRepository) : Vi
         }
     }
 
-    class ViewModelFactory(private val dataSource: TransactionsRepository) :
+    class ViewModelFactory(private val dataSource: CategoriesRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(TransactionsViewModel::class.java)) {
-                return TransactionsViewModel(dataSource) as T
+            if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
+                return DetailViewModel(dataSource) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

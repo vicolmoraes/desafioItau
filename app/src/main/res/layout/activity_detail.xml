@@ -14,88 +14,109 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_24"
+    <ViewFlipper
+        android:id="@+id/vf_activity_detail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/in_toolbar">
+        app:layout_constraintTop_toBottomOf="@id/in_toolbar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/margin_24">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/in_toolbar">
 
-            <TextView
-                android:id="@+id/tv_activity_detail_source"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Origem:"
-                android:textAlignment="center"
-                android:textColor="@color/black_000000"
-                android:textSize="@dimen/med_font_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/margin_24">
 
-            <TextView
-                android:id="@+id/tv_activity_detail_source_value"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_8"
-                android:textAlignment="center"
-                android:textColor="@color/black_000000"
-                android:textSize="@dimen/med_font_size"
-                app:layout_constraintStart_toEndOf="@+id/tv_activity_detail_source"
-                app:layout_constraintTop_toTopOf="@+id/tv_activity_detail_source"
-                tools:text="Uber" />
+                <TextView
+                    android:id="@+id/tv_activity_detail_source"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Origem:"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_000000"
+                    android:textSize="@dimen/med_font_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_activity_detail_amount"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Valor:"
-                android:textAlignment="center"
-                android:textColor="@color/black_000000"
-                android:textSize="@dimen/med_font_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_activity_detail_source" />
+                <TextView
+                    android:id="@+id/tv_activity_detail_source_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_000000"
+                    android:textSize="@dimen/med_font_size"
+                    app:layout_constraintStart_toEndOf="@+id/tv_activity_detail_source"
+                    app:layout_constraintTop_toTopOf="@+id/tv_activity_detail_source"
+                    tools:text="Uber" />
 
-            <TextView
-                android:id="@+id/tv_activity_detail_amount_valuer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_8"
-                android:textAlignment="center"
-                android:textColor="@color/black_000000"
-                android:textSize="@dimen/med_font_size"
-                app:layout_constraintStart_toEndOf="@+id/tv_activity_detail_amount"
-                app:layout_constraintTop_toTopOf="@+id/tv_activity_detail_amount"
-                tools:text="R$ 50,00" />
+                <TextView
+                    android:id="@+id/tv_activity_detail_amount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Valor:"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_000000"
+                    android:textSize="@dimen/med_font_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_activity_detail_source" />
 
-            <TextView
-                android:id="@+id/tv_activity_detail_category"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Categoria:"
-                android:textAlignment="center"
-                android:textColor="@color/black_000000"
-                android:textSize="@dimen/med_font_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_activity_detail_amount" />
+                <TextView
+                    android:id="@+id/tv_activity_detail_amount_valuer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_000000"
+                    android:textSize="@dimen/med_font_size"
+                    app:layout_constraintStart_toEndOf="@+id/tv_activity_detail_amount"
+                    app:layout_constraintTop_toTopOf="@+id/tv_activity_detail_amount"
+                    tools:text="R$ 50,00" />
 
-            <TextView
-                android:id="@+id/tv_activity_detail_category_value"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_8"
-                android:textAlignment="center"
-                android:textColor="@color/black_000000"
-                android:textSize="@dimen/med_font_size"
-                app:layout_constraintStart_toEndOf="@+id/tv_activity_detail_category"
-                app:layout_constraintTop_toTopOf="@+id/tv_activity_detail_category"
-                tools:text="Entretenimento" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/tv_activity_detail_category"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Categoria:"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_000000"
+                    android:textSize="@dimen/med_font_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_activity_detail_amount" />
+
+                <TextView
+                    android:id="@+id/tv_activity_detail_category_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_000000"
+                    android:textSize="@dimen/med_font_size"
+                    app:layout_constraintStart_toEndOf="@+id/tv_activity_detail_category"
+                    app:layout_constraintTop_toTopOf="@+id/tv_activity_detail_category"
+                    tools:text="Entretenimento" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_activity_detail_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </ViewFlipper>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

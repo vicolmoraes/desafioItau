@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
 import com.vitoria.desafioitau.R
+import com.vitoria.desafioitau.data.repository.ApiDataSource
 import com.vitoria.desafioitau.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_detail.*
 import java.text.NumberFormat
@@ -20,7 +22,33 @@ class DetailActivity : BaseActivity() {
         tv_activity_detail_amount_valuer.text =
             NumberFormat.getCurrencyInstance().format(intent.getDoubleExtra(EXTRA_AMOUNT, 0.00))
         tv_activity_detail_source_value.text = intent.getStringExtra(EXTRA_SOURCE)
-        tv_activity_detail_category_value.text = intent.getStringExtra(EXTRA_CATEGORY)
+
+        setData()
+    }
+
+    private fun setData() {
+        val viewModel: DetailViewModel = DetailViewModel.ViewModelFactory(
+            ApiDataSource()
+        )
+            .create(DetailViewModel::class.java)
+
+        viewModel.categoriesLiveData.observe(this, Observer {
+            it?.let { transactions ->
+                tv_activity_detail_category_value.text = transactions
+            }
+        })
+
+        viewModel.viewFlipperLiveData.observe(this, Observer {
+            it?.let { viewFlipper ->
+                vf_activity_detail.displayedChild = viewFlipper.first
+
+                viewFlipper.second?.let { errorMessageResId ->
+                    tv_activity_detail_error.text = getString(errorMessageResId)
+                }
+            }
+        })
+
+        viewModel.getCategories(intent.getIntExtra(EXTRA_CATEGORY, 0))
     }
 
     companion object {
@@ -33,7 +61,7 @@ class DetailActivity : BaseActivity() {
             context: Context,
             amount: Double,
             source: String,
-            category: String
+            category: Int
         ): Intent {
             return Intent(context, DetailActivity::class.java).apply {
                 putExtra(EXTRA_SOURCE, source)
