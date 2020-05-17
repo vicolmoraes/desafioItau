@@ -3,10 +3,10 @@ package com.vitoria.desafioitau.presentation.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import com.vitoria.desafioitau.R
 import com.vitoria.desafioitau.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.toolbar.*
 
 class DetailActivity : BaseActivity() {
 
@@ -14,7 +14,8 @@ class DetailActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        setupToolbar(toolbar, R.string.app_name)
+        setupToolbar(in_toolbar as Toolbar, R.string.detail_activity_title)
+
         tv_activity_detail_amount_valuer.text = intent.getStringExtra(EXTRA_AMOUNT)
         tv_activity_detail_source_value.text = intent.getStringExtra(EXTRA_SOURCE)
         tv_activity_detail_category_value.text = intent.getStringExtra(EXTRA_CATEGORY)

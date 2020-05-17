@@ -1,13 +1,13 @@
 package com.vitoria.desafioitau.presentation.transactions
 
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import com.vitoria.desafioitau.R
 import com.vitoria.desafioitau.data.repository.TransactionsApiDataSource
 import com.vitoria.desafioitau.presentation.base.BaseActivity
 import com.vitoria.desafioitau.presentation.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_transactions.*
-import kotlinx.android.synthetic.main.toolbar.*
 
 class TransactionsActivity : BaseActivity() {
 
@@ -15,7 +15,7 @@ class TransactionsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transactions)
 
-        setupToolbar(toolbar, R.string.app_name)
+        setupToolbar(in_toolbar as Toolbar, R.string.transactions_activity_title)
 
         val viewModel: TransactionsViewModel = TransactionsViewModel.ViewModelFactory(
             TransactionsApiDataSource()
