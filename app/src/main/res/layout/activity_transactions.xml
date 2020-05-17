@@ -15,17 +15,34 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_activity_transactions_list"
-        android:layout_width="match_parent"
+    <ViewFlipper
+        android:id="@+id/vf_activity_transactions"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_24"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/in_toolbar"
-        tools:itemCount="9"
-        tools:listitem="@layout/item_transaction" />
+        app:layout_constraintTop_toBottomOf="@id/in_toolbar">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_activity_transactions_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_24"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="9"
+            tools:listitem="@layout/item_transaction" />
+
+        <TextView
+            android:id="@+id/tv_activity_transactions_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </ViewFlipper>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
