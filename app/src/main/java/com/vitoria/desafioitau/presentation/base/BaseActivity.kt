@@ -1,4 +1,4 @@
-package com.vitoria.desafioitau.presentation
+package com.vitoria.desafioitau.presentation.base
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity

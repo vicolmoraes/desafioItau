@@ -5,74 +5,76 @@
     android:id="@+id/cv_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_16"
-    android:layout_marginTop="@dimen/margin_16"
-    android:layout_marginEnd="@dimen/margin_16"
+    android:layout_marginStart="@dimen/margin_24"
+    android:layout_marginEnd="@dimen/margin_24"
     app:cardBackgroundColor="@color/white_ffffff">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_item_chuck_fact"
+        android:id="@+id/cl_item_transaction_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/margin_16">
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_16">
 
-        <TextView
-            android:id="@+id/tv_item_transaction_source"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_item_transaction_icon"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@color/black_000000"
-            android:textSize="@dimen/med_font_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Origem:" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/v_item_transaction_separator"
+                android:layout_width="1dp"
+                android:layout_height="25dp"
+                android:background="@color/pink_f2decd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_item_transaction_category_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_money"
+                android:importantForAccessibility="no"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_item_transaction_separator" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="25dp"
+                android:background="@color/pink_f2decd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_item_transaction_category_icon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/tv_item_transaction_source_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_24"
             android:textAlignment="center"
             android:textColor="@color/black_000000"
             android:textSize="@dimen/med_font_size"
-            app:layout_constraintStart_toEndOf="@+id/tv_item_transaction_source"
-            app:layout_constraintTop_toTopOf="@+id/tv_item_transaction_source"
+            app:layout_constraintBottom_toTopOf="@+id/tv_item_transaction_amount_valuer"
+            app:layout_constraintStart_toEndOf="@+id/cl_item_transaction_icon"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Uber" />
-
-        <TextView
-            android:id="@+id/tv_item_transaction_amount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@color/black_000000"
-            android:textSize="@dimen/med_font_size"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_transaction_source"
-            tools:text="Valor:" />
 
         <TextView
             android:id="@+id/tv_item_transaction_amount_valuer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_8"
             android:textAlignment="center"
-            android:textColor="@color/black_000000"
+            android:textColor="@color/orange_ff650"
+            android:textStyle="bold"
             android:textSize="@dimen/med_font_size"
-            app:layout_constraintStart_toEndOf="@+id/tv_item_transaction_amount"
-            app:layout_constraintTop_toTopOf="@+id/tv_item_transaction_amount"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_transaction_source_value"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_transaction_source_value"
             tools:text="R$ 50,00" />
-
-        <Button
-            android:id="@+id/bt_item_transaction_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
-            android:background="@drawable/shape_button"
-            android:text="Detalhes"
-            android:textColor="@color/white_ffffff"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_transaction_amount" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
