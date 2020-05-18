@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16"
         android:orientation="horizontal"
+        android:layout_marginStart="@dimen/margin_24"
+        android:layout_marginEnd="@dimen/margin_24"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

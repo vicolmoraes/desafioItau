@@ -4,7 +4,7 @@
     android:id="@+id/bt_item_month"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_8"
+    android:layout_marginEnd="@dimen/margin_8"
     android:background="@drawable/shape_button"
     android:textColor="@color/white_ffffff"
     android:textStyle="bold"
