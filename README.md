@@ -11,11 +11,11 @@ O aplicativo contém testes unitários e instrumentados.<br>
 
 <b>Tela Principal de Lançamentos</b><br>
 
-<img width="400" height="800" src="https://github.com/vicolmoraes/EvinoChallenge/blob/master/transaction.png"><br>
+<img width="400" height="800" src="https://github.com/vicolmoraes/desafioItau/blob/master/transaction.png"><br>
 
 <b>Tela de Detalhes do Lançamento</b><br>
 
-<img width="400" height="800" src="https://github.com/vicolmoraes/EvinoChallenge/blob/master/detail.png"><br>
+<img width="400" height="800" src="https://github.com/vicolmoraes/desafioItau/blob/master/detail.png"><br>
 
 
 
