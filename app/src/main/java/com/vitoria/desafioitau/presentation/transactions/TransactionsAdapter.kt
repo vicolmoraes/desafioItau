@@ -35,11 +35,21 @@ class TransactionsAdapter(
         private val source = itemView.tv_item_transaction_source_value
         private val amount = itemView.tv_item_transaction_amount_valuer
         private val month = itemView.tv_item_transaction_month
+        private val icon = itemView.iv_item_transaction_category_icon
 
         fun bindView(transaction: Transaction) {
             source.text = transaction.source
             amount.text = NumberFormat.getCurrencyInstance().format(transaction.amount)
             month.text = MonthsEnum.values().get(transaction.month).month
+
+            when (transaction.category) {
+                1 -> icon.setBackgroundResource(R.drawable.ic_car)
+                2 -> icon.setBackgroundResource(R.drawable.ic_money)
+                3 -> icon.setBackgroundResource(R.drawable.ic_beauty)
+                4 -> icon.setBackgroundResource(R.drawable.ic_mechanical)
+                5 -> icon.setBackgroundResource(R.drawable.ic_restaurant)
+                6 -> icon.setBackgroundResource(R.drawable.ic_supermarket)
+            }
 
             itemView.setOnClickListener {
                 onItemClickListener.invoke(transaction)
